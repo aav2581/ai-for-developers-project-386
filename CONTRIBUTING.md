@@ -63,3 +63,16 @@ apps/
 - `pre-push` — полная проверка: `npm run lint && npm run typecheck && npm test && npm run build`
 
 Хук `pre-push` можно пропустить при необходимости: `git push --no-verify`.
+
+## CI и merge в main
+
+Ветка `main` защищена на уровне GitHub: править её можно только через pull request, прямые push запрещены (локальный `--no-verify` защищённую ветку не обходит). Перед мержем должны пройти все проверки CI (`.github/workflows/ci.yml`):
+
+| Джоба | Команда |
+|---|---|
+| `lint` | `npm run lint` |
+| `typecheck` | `npm run typecheck` |
+| `test` | `npm test` |
+| `build` | `npm run build`, стартует только после трёх проверок выше |
+
+CI запускается на pull request в `main`, на push в `main` и вручную через `workflow_dispatch`. Мерж выполняется вручную кнопкой в веб-интерфейсе GitHub после зелёного CI.
