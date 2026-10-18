@@ -10,20 +10,31 @@
 
 ## Стек
 
-- Разное
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vue 3](https://vuejs.org/)
+- [Vite 8](https://vite.dev/) — сборка на [Rolldown](https://rolldown.rs/), транспиляция через [oxc](https://oxc.rs/)
+- [Vitest](https://vitest.dev/) — тесты
+- [oxlint](https://oxc.rs/docs/guide/usage/linter) — линтинг
 
 ## Установка
-
-<!-- Опишите установку: клонирование, зависимости, переменные окружения -->
 
 ```bash
 git clone https://github.com/aav2581/ai-for-developers-project-386.git
 cd ai-for-developers-project-386
+npm install
 ```
 
 ## Использование
 
-<!-- Добавьте примеры запуска и запись asciinema — именно это смотрит работодатель -->
+```bash
+npm run dev        # dev-сервер
+npm run build      # production-сборка
+npm run preview    # предпросмотр production-сборки
+npm test           # прогон тестов
+npm run test:watch # тесты в watch-режиме
+npm run lint       # линтинг (oxlint)
+npm run typecheck  # проверка типов (vue-tsc)
+```
 
 ---
 
