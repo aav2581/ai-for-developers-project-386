@@ -13,6 +13,9 @@
 - [TypeScript](https://www.typescriptlang.org/)
 - [Vue 3](https://vuejs.org/)
 - [Vite 8](https://vite.dev/) — сборка на [Rolldown](https://rolldown.rs/), транспиляция через [oxc](https://oxc.rs/)
+- [Tailwind CSS 4](https://tailwindcss.com/) — утилитарные стили
+- [FlyonUI](https://flyonui.com/) — UI-компоненты на Tailwind
+- [Tabler Icons](https://icon-sets.iconify.design/tabler/) через [Iconify](https://iconify.design/) — иконки
 - [Vitest](https://vitest.dev/) — тесты
 - [oxlint](https://oxc.rs/docs/guide/usage/linter) — линтинг
 

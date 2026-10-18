@@ -15,9 +15,8 @@
     "useDefineForClassFields": true,
     "jsx": "preserve",
     "noEmit": true,
-    "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.vue", "tests/**/*.ts"]
