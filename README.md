@@ -11,33 +11,45 @@
 ## Стек
 
 - [TypeScript](https://www.typescriptlang.org/)
-- [Vue 3](https://vuejs.org/)
-- [Vite 8](https://vite.dev/) — сборка на [Rolldown](https://rolldown.rs/), транспиляция через [oxc](https://oxc.rs/)
-- [Tailwind CSS 4](https://tailwindcss.com/) — утилитарные стили
-- [FlyonUI](https://flyonui.com/) — UI-компоненты на Tailwind
-- [Tabler Icons](https://icon-sets.iconify.design/tabler/) через [Iconify](https://iconify.design/) — иконки
+- [Monorepo](https://docs.npmjs.com/cli/using-npm/workspaces): npm workspaces + [Turborepo](https://turborepo.com/)
+- Frontend: [Vue 3](https://vuejs.org/), [Vite 8](https://vite.dev/) — сборка на [Rolldown](https://rolldown.rs/), транспиляция через [oxc](https://oxc.rs/), [Tailwind CSS 4](https://tailwindcss.com/), [FlyonUI](https://flyonui.com/), [Tabler Icons](https://icon-sets.iconify.design/tabler/) через [Iconify](https://iconify.design/)
+- Backend: [Fastify 5](https://fastify.dev/)
 - [Vitest](https://vitest.dev/) — тесты
 - [oxlint](https://oxc.rs/docs/guide/usage/linter) — линтинг
 
+## Структура
+
+```
+apps/
+  frontend/   # Vue 3 + Vite (UI)
+  backend/    # Fastify (API)
+```
+
 ## Установка
+
+Требуется Node.js 24+ (см. `.nvmrc`; при использовании nvm — `nvm use`). Версии зависимостей закреплены точно в `package.json` — воспроизводимая установка через `npm ci`.
 
 ```bash
 git clone https://github.com/aav2581/ai-for-developers-project-386.git
 cd ai-for-developers-project-386
-npm install
+npm ci
 ```
 
 ## Использование
 
 ```bash
-npm run dev        # dev-сервер
-npm run build      # production-сборка
+npm run dev        # dev-серверы фронтенда и бэкенда (Turborepo)
+npm run build      # production-сборка всех пакетов
 npm run preview    # предпросмотр production-сборки
 npm test           # прогон тестов
 npm run test:watch # тесты в watch-режиме
 npm run lint       # линтинг (oxlint)
-npm run typecheck  # проверка типов (vue-tsc)
+npm run typecheck  # проверка типов (vue-tsc / tsc)
 ```
+
+Команды можно запускать для одного пакета: `npm run dev -w apps/backend`, `npm test -w apps/frontend` и т.д.
+
+Бэкенд слушает `http://localhost:3000` (`GET /health`), дев-сервер фронтенда проксирует `/api` на бэкенд.
 
 ## Участие в разработке
 

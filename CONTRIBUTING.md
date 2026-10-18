@@ -13,6 +13,7 @@
 - описание — по-русски, в повелительном наклонении («добавить», а не «добавил»)
 - заголовок — не длиннее 100 символов
 - заголовок не начинается с заглавной буквы и не заканчивается точкой
+- скоуп необязателен; для изменений в конкретном пакете используйте `frontend` или `backend`
 
 ## Типы
 
@@ -39,12 +40,26 @@ docs: описать установку в README
 chore: подключить husky и commitlint
 ```
 
+## Структура проекта
+
+Монорепка на npm workspaces + Turborepo:
+
+```
+apps/
+  frontend/   # Vue 3 + Vite (UI)
+  backend/    # Fastify (API)
+```
+
+Общие инструменты (husky, commitlint, oxlint, typescript, turbo) лежат в корневом `package.json`. Запуск `npm run <script>` в корне делегирует задачу во все пакеты через Turborepo; для одного пакета — `npm run <script> -w apps/<пакет>`.
+
+Версии зависимостей закреплены в `package.json` без диапазонов (только проверенные версии), воспроизводимая установка — `npm ci`. Обновление зависимости: `npm install <пакет>@<версия> -w apps/<пакет> --save-exact`, затем прогон проверок и коммит `package.json` + `package-lock.json` вместе.
+
 ## Проверка
 
 Сообщения и код проверяются автоматически хуками Husky:
 
-- `pre-commit` — lint-staged: `oxlint` и `vue-tsc --noEmit` по изменённым файлам
+- `pre-commit` — lint-staged: `oxlint` и typecheck (`vue-tsc` для frontend, `tsc` для backend) по изменённым файлам
 - `commit-msg` — commitlint: формат сообщения коммита
-- `pre-push` — полная проверка: `npm run lint && npm test && npm run build`
+- `pre-push` — полная проверка: `npm run lint && npm run typecheck && npm test && npm run build`
 
 Хук `pre-push` можно пропустить при необходимости: `git push --no-verify`.
