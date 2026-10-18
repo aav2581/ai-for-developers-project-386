@@ -10,12 +10,21 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "lint": "oxlint",
-    "typecheck": "vue-tsc --noEmit"
+    "typecheck": "vue-tsc --noEmit",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "**/*.{ts,vue}": [
+      "oxlint",
+      "vue-tsc --noEmit"
+    ]
   },
   "dependencies": {
     "vue": "^3.5.40"
   },
   "devDependencies": {
+    "@commitlint/cli": "^21.2.4",
+    "@commitlint/config-conventional": "^21.2.4",
     "@iconify-json/tabler": "^1.2.42",
     "@iconify/tailwind4": "^1.2.3",
     "@tailwindcss/vite": "^4.3.3",
@@ -23,6 +32,8 @@
     "@vue/test-utils": "^2.4.6",
     "flyonui": "^2.4.1",
     "happy-dom": "^20.14.6",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.6.0",
     "oxlint": "^1.88.0",
     "tailwindcss": "^4.3.3",
     "typescript": "^5.9.0",

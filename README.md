@@ -39,6 +39,10 @@ npm run lint       # линтинг (oxlint)
 npm run typecheck  # проверка типов (vue-tsc)
 ```
 
+## Участие в разработке
+
+Коммиты оформляются по [Conventional Commits](https://www.conventionalcommits.org/ru/v1.0.0/), формат описан в [CONTRIBUTING.md](./CONTRIBUTING.md). Код проверяется хуками Husky: lint и типы перед коммитом, формат сообщения, полная сборка и тесты перед пушем.
+
 ---
 
 <details>
