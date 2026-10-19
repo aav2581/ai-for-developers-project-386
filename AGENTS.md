@@ -26,3 +26,17 @@
 - Backend в режиме NodeNext — относительные импорты с расширением `.js`.
 - Корневой `dist/` — остаток сборки до монорепки, можно удалить.
 - Стек-версии не поднимать без согласования.
+
+## Agent skills
+
+### Issue tracker
+
+Issues живут в GitHub Issues этого репо; все операции через `gh` CLI. См. `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Пять дефолтных канонических лейблов: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`. См. `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Multi-context: `GLOSSARY-MAP.md` в корне + по `GLOSSARY.md` и `docs/adr/` на каждый пакет в `apps/*`. См. `docs/agents/domain.md`.
