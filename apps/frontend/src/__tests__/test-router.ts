@@ -1,5 +1,5 @@
 import { createMemoryHistory } from 'vue-router'
-import { createAppRouter } from '../router'
+import { createAppRouter } from '@/app/router'
 
 export async function routerAt(path: string) {
   const router = createAppRouter(createMemoryHistory())
