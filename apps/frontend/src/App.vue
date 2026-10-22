@@ -1,12 +1,18 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import AppFooter from './components/AppFooter.vue'
+import AppHeader from './components/AppHeader.vue'
 </script>
 
 <template>
-  <main class="min-h-screen bg-base-200 flex items-center justify-center p-6">
-    <div class="w-full max-w-md">
-      <h1 class="text-3xl font-bold text-center mb-6">Календарь звонков</h1>
-      <HelloWorld msg="Vite + Vue 3 + Vitest + oxc" />
-    </div>
-  </main>
+  <div class="min-h-screen bg-stone-950 text-stone-100 antialiased">
+    <a
+      href="#content"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-amber-400 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-stone-950"
+    >
+      К содержанию
+    </a>
+    <AppHeader />
+    <RouterView />
+    <AppFooter />
+  </div>
 </template>
