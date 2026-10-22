@@ -12,7 +12,7 @@
 
 - [TypeScript](https://www.typescriptlang.org/)
 - [Monorepo](https://docs.npmjs.com/cli/using-npm/workspaces): npm workspaces + [Turborepo](https://turborepo.com/)
-- Frontend: [Vue 3](https://vuejs.org/), [Vite 8](https://vite.dev/) — сборка на [Rolldown](https://rolldown.rs/), транспиляция через [oxc](https://oxc.rs/), [Tailwind CSS 4](https://tailwindcss.com/), [FlyonUI](https://flyonui.com/), [Tabler Icons](https://icon-sets.iconify.design/tabler/) через [Iconify](https://iconify.design/)
+- Frontend: [Vue 3](https://vuejs.org/), [Vue Router](https://router.vuejs.org/), [Vite 8](https://vite.dev/) — сборка на [Rolldown](https://rolldown.rs/), транспиляция через [oxc](https://oxc.rs/), [Tailwind CSS 4](https://tailwindcss.com/), [FlyonUI](https://flyonui.com/), [Tabler Icons](https://icon-sets.iconify.design/tabler/) через [Iconify](https://iconify.design/)
 - Backend: [Fastify 5](https://fastify.dev/)
 - [Vitest](https://vitest.dev/) — тесты
 - [oxlint](https://oxc.rs/docs/guide/usage/linter) — линтинг
