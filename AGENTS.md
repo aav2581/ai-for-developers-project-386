@@ -8,7 +8,7 @@
 
 ## Структура
 
-- `apps/frontend` — Vue 3 + Vite 8 на FSD (`app → pages → widgets → features → entities → shared`), у слайсов публичный API через `index.ts`; тесты рядом с кодом в `src/**/__tests__/`, границы слоёв проверяет `src/__tests__/architecture.spec.ts`.
+- `apps/frontend` — Vue 3 + Vite 8 на минимальном FSD (`app → pages → entities → shared`), у слайсов публичный API через `index.ts`; `widgets` и `features` заводим только при реальном переиспользовании или самостоятельной логике. Тесты рядом с кодом в `src/**/__tests__/`, границы слоёв проверяет `src/__tests__/architecture.spec.ts`.
 - `apps/backend` — Fastify 5 на tsx, без шага сборки: `src/app.ts` экспортирует `buildApp()` (для тестов через `app.inject()`), `src/server.ts` только слушает порт. Пока только `GET /health`.
 
 ## Хуки и коммиты

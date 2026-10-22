@@ -6,10 +6,10 @@ const modules = import.meta.glob('/src/**/*.{ts,vue}', {
   eager: true,
 }) as Record<string, string>
 
-const layers = ['shared', 'entities', 'features', 'widgets', 'pages', 'app'] as const
+const layers = ['shared', 'entities', 'pages', 'app'] as const
 type Layer = (typeof layers)[number]
 
-const slicedLayers = new Set<Layer>(['entities', 'features', 'widgets', 'pages'])
+const slicedLayers = new Set<Layer>(['entities', 'pages'])
 
 function isLayer(value: string | undefined): value is Layer {
   return layers.includes(value as Layer)

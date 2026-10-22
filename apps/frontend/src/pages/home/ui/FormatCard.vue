@@ -29,7 +29,7 @@ defineProps<{ format: Format }>()
 
     <div class="mt-auto pt-6">
       <ActionLink
-        :to="`/book?format=${format.id}`"
+        :to="{ name: 'book', query: { format: format.id } }"
         variant="outline"
         size="sm"
         class="w-full"

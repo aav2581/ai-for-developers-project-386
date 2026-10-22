@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ActionLink } from '@/shared/ui'
-import { hero } from '../model/content'
+import { hero } from '../../model/content'
 </script>
 
 <template>

@@ -1,16 +1,20 @@
 <script setup lang="ts">
-import { SectionHeading } from '@/shared/ui'
-import { heading, items } from '../model/content'
+import SectionHeading from '../SectionHeading.vue'
+import { faq } from '../../model/content'
 </script>
 
 <template>
   <section id="faq" class="border-t border-stone-800/70 py-16 sm:py-24">
     <div class="mx-auto max-w-6xl px-4 sm:px-6">
-      <SectionHeading :eyebrow="heading.eyebrow" :title="heading.title" :lead="heading.lead" />
+      <SectionHeading
+        :eyebrow="faq.heading.eyebrow"
+        :title="faq.heading.title"
+        :lead="faq.heading.lead"
+      />
 
       <div class="mt-10 divide-y divide-stone-800 rounded-3xl border border-stone-800 bg-stone-900/60 px-5 sm:px-6">
         <details
-          v-for="(item, index) in items"
+          v-for="(item, index) in faq.items"
           :key="item.question"
           class="group"
           :open="index === 0"

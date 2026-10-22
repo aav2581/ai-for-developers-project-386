@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { safety } from '../model/content'
+import { safety } from '../../model/content'
 </script>
 
 <template>

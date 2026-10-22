@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Feature } from './types'
+import type { Feature } from '../model/content'
 
 withDefaults(defineProps<Feature & { index?: string }>(), {
   index: '',

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { support } from '../model/content'
+import { support } from '../../model/content'
 </script>
 
 <template>

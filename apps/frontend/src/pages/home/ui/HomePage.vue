@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { FaqSection } from '@/widgets/faq'
-import { FormatsSection } from '@/widgets/formats-overview'
-import { HowItWorksSection } from '@/widgets/how-it-works'
-import { HeroSection } from '@/widgets/landing-hero'
-import { PromisesSection } from '@/widgets/promises'
-import { SafetySection } from '@/widgets/safety'
-import { SupportSection } from '@/widgets/support'
+import FaqSection from './sections/FaqSection.vue'
+import FormatsSection from './sections/FormatsSection.vue'
+import HowItWorksSection from './sections/HowItWorksSection.vue'
+import HeroSection from './sections/HeroSection.vue'
+import PromisesSection from './sections/PromisesSection.vue'
+import SafetySection from './sections/SafetySection.vue'
+import SupportSection from './sections/SupportSection.vue'
 </script>
 
 <template>
