@@ -1,0 +1,4 @@
+# Конфигурация codegen-цепочки контракта «Друга на час».
+# T2 (#12): компиляция без эмиттеров — только проверка типов.
+# T3 (#13): добавит эмиттер @typespec/openapi3 → ./openapi.yaml
+# T5 (#15): добавит эмиттер @typespec/json-schema → ../apps/backend/src/generated/openapi3.json
