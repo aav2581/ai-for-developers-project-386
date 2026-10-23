@@ -1,0 +1,40 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "BookingResponse.json",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string"
+        },
+        "slotId": {
+            "type": "string"
+        },
+        "startsAt": {
+            "type": "string"
+        },
+        "format": {
+            "$ref": "FormatName.json"
+        },
+        "guestName": {
+            "type": "string"
+        },
+        "guestEmail": {
+            "$ref": "MaskedEmail.json"
+        },
+        "venueId": {
+            "type": "string"
+        },
+        "createdAt": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "id",
+        "slotId",
+        "startsAt",
+        "format",
+        "guestName",
+        "guestEmail",
+        "createdAt"
+    ]
+}

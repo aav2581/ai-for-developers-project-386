@@ -1,0 +1,16 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "EveningsResponse.json",
+    "type": "object",
+    "properties": {
+        "evenings": {
+            "type": "array",
+            "items": {
+                "$ref": "Evening.json"
+            }
+        }
+    },
+    "required": [
+        "evenings"
+    ]
+}

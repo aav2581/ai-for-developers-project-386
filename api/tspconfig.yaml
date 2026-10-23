@@ -1,0 +1,11 @@
+emit:
+  - "@typespec/openapi3"
+  - "@typespec/json-schema"
+options:
+  "@typespec/openapi3":
+    file-type: yaml
+    emitter-output-dir: "{cwd}/api"
+  "@typespec/json-schema":
+    file-type: json
+    emitAllModels: true
+    emitter-output-dir: "{cwd}/apps/backend/src/generated"

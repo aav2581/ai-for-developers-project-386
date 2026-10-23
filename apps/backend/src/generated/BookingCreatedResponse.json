@@ -1,0 +1,18 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "BookingCreatedResponse.json",
+    "type": "object",
+    "properties": {
+        "_": {
+            "type": "string",
+            "const": "201"
+        },
+        "body": {
+            "$ref": "BookingResponse.json"
+        }
+    },
+    "required": [
+        "_",
+        "body"
+    ]
+}

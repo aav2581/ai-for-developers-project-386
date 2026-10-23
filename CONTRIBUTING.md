@@ -54,6 +54,19 @@ apps/
 
 Версии зависимостей закреплены в `package.json` без диапазонов (только проверенные версии), воспроизводимая установка — `npm ci`. Обновление зависимости: `npm install <пакет>@<версия> -w apps/<пакет> --save-exact`, затем прогон проверок и коммит `package.json` + `package-lock.json` вместе.
 
+## Контракт и codegen
+
+API живёт в одном месте — `api/contract.tsp`. Из этого TypeSpec-контракта генерируются `api/openapi.yaml`, json-схемы в `apps/backend/src/generated/` и клиентский SDK в `apps/frontend/src/shared/api/sdk/`. Эти файлы — артефакты эмиттеров; руками их править нельзя, дрифт ловит `npm run codegen:drift` (локально).
+
+Порядок изменения API:
+
+1. Поправить `api/contract.tsp` (и, если меняется поведение, `docs/spec.md` + issue #7).
+2. Прогнать `npm run codegen` — обновятся OpenAPI, json-схемы и SDK.
+3. Проверить `git diff` по `api/openapi.yaml`, `apps/backend/src/generated/` и `apps/frontend/src/shared/api/sdk/`. Зафиксировать артефакты в том же PR, что и изменение `contract.tsp`.
+4. После `codegen` править обработчики и страницы в `apps/backend/src/server/` и `apps/frontend/src/pages/`.
+
+Сами артефакты в коммитах смотрятся как обычные `feat`/`fix` — не выделяйте их отдельным префиксом.
+
 ## Проверка
 
 Сообщения и код проверяются автоматически хуками Husky:
@@ -73,6 +86,6 @@ apps/
 | `lint` | `npm run lint` |
 | `typecheck` | `npm run typecheck` |
 | `test` | `npm test` |
-| `build` | `npm run build`, стартует только после трёх проверок выше |
+| `build` | `npm run build`, стартует после трёх проверок выше |
 
 CI запускается на pull request в `main`, на push в `main` и вручную через `workflow_dispatch`. Мерж выполняется вручную кнопкой в веб-интерфейсе GitHub после зелёного CI.

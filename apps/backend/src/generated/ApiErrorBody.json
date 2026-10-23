@@ -1,0 +1,39 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "ApiErrorBody.json",
+    "type": "object",
+    "properties": {
+        "code": {
+            "anyOf": [
+                {
+                    "type": "string",
+                    "const": "validation_error"
+                },
+                {
+                    "type": "string",
+                    "const": "slot_unavailable"
+                },
+                {
+                    "type": "string",
+                    "const": "already_booked"
+                },
+                {
+                    "type": "string",
+                    "const": "unknown_venue"
+                },
+                {
+                    "type": "string",
+                    "const": "not_found"
+                }
+            ]
+        },
+        "message": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "code",
+        "message"
+    ],
+    "description": "Единый формат ошибки."
+}
