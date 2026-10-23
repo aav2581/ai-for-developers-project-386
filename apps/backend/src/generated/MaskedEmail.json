@@ -1,0 +1,6 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "MaskedEmail.json",
+    "type": "string",
+    "description": "Маска email: u***@example.com. Полный email через GET не возвращается."
+}

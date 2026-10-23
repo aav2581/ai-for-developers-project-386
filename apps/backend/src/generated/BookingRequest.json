@@ -1,0 +1,28 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "BookingRequest.json",
+    "type": "object",
+    "properties": {
+        "slotId": {
+            "type": "string"
+        },
+        "format": {
+            "$ref": "FormatName.json"
+        },
+        "guestName": {
+            "type": "string"
+        },
+        "guestEmail": {
+            "type": "string"
+        },
+        "venueId": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "slotId",
+        "format",
+        "guestName",
+        "guestEmail"
+    ]
+}

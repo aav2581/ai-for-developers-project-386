@@ -1,0 +1,13 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "ApiErrorResponse.json",
+    "type": "object",
+    "properties": {
+        "error": {
+            "$ref": "ApiErrorBody.json"
+        }
+    },
+    "required": [
+        "error"
+    ]
+}

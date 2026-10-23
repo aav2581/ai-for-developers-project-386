@@ -1,0 +1,16 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "UpcomingResponse.json",
+    "type": "object",
+    "properties": {
+        "bookings": {
+            "type": "array",
+            "items": {
+                "$ref": "BookingResponse.json"
+            }
+        }
+    },
+    "required": [
+        "bookings"
+    ]
+}

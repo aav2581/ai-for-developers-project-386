@@ -1,0 +1,63 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "Slot.json",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "Идентификатор слота: YYYY-MM-DD-HH:mm по фактическому времени начала."
+        },
+        "eveningDate": {
+            "type": "string",
+            "description": "Дата вечера, к которому относится слот (для слотов 00:00–02:00 — предыдущий день)."
+        },
+        "startsAt": {
+            "type": "string",
+            "description": "Начало в Europe/Moscow, ISO с +03:00."
+        },
+        "endsAt": {
+            "type": "string",
+            "description": "Конец в Europe/Moscow."
+        },
+        "timeLabel": {
+            "type": "string",
+            "description": "Подпись, как её видит гость (например '09:00–10:00')."
+        },
+        "capacity": {
+            "type": "integer",
+            "minimum": -2147483648,
+            "maximum": 2147483647
+        },
+        "booked": {
+            "type": "integer",
+            "minimum": -2147483648,
+            "maximum": 2147483647
+        },
+        "available": {
+            "type": "boolean",
+            "description": "Свободен ли слот в выбранном формате с учётом «сейчас» и горизонта."
+        },
+        "lockedFormat": {
+            "anyOf": [
+                {
+                    "$ref": "FormatName.json"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "description": "Формат, зафиксированный первой записью. Если null — слот доступен для любого формата."
+        }
+    },
+    "required": [
+        "id",
+        "eveningDate",
+        "startsAt",
+        "endsAt",
+        "timeLabel",
+        "capacity",
+        "booked",
+        "available",
+        "lockedFormat"
+    ]
+}
