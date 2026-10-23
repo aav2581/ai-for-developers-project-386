@@ -26,7 +26,10 @@
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
     "compile:contract": "tsp compile api --no-emit",
-    "codegen:oas": "tsp compile api --emit @typespec/openapi3",
+    "codegen:oas": "tsp compile api",
+    "codegen:sdk": "npm run codegen:sdk -w apps/frontend",
+    "codegen": "npm run codegen:oas && npm run codegen:sdk",
+    "codegen:drift": "npm run codegen && git diff --quiet api/openapi.yaml apps/backend/src/generated apps/frontend/src/shared/api/sdk && echo codegen: drift clean || (echo 'codegen: emitted artifacts drifted from repo; запусти npm run codegen и закоммить diff.' && exit 1)",
     "prepare": "husky"
   },
   "devDependencies": {
