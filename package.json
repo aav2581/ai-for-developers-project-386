@@ -25,7 +25,8 @@
     "test:watch": "turbo run test:watch",
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
-    "compile:contract": "tsp compile api",
+    "compile:contract": "tsp compile api --no-emit",
+    "codegen:oas": "tsp compile api --emit @typespec/openapi3",
     "prepare": "husky"
   },
   "devDependencies": {

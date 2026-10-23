@@ -1,0 +1,280 @@
+openapi: 3.0.0
+info:
+  title: FriendForAnHour
+  version: 0.0.0
+tags: []
+paths:
+  /api/bookings:
+    post:
+      operationId: Bookings_create
+      parameters: []
+      responses:
+        '201':
+          description: The request has succeeded and a new resource has been created as a result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookingCreatedResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookingRequest'
+  /api/bookings/upcoming:
+    get:
+      operationId: UpcomingBookings_list
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpcomingResponse'
+  /api/evenings:
+    get:
+      operationId: Evenings_list
+      parameters:
+        - name: from
+          in: query
+          required: true
+          schema:
+            type: string
+          explode: false
+        - name: to
+          in: query
+          required: true
+          schema:
+            type: string
+          explode: false
+        - name: format
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/FormatName'
+          explode: false
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EveningsResponse'
+  /api/venues:
+    get:
+      operationId: Venues_list
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VenuesResponse'
+  /health:
+    get:
+      operationId: HealthOps_check
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+components:
+  schemas:
+    ApiErrorBody:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: string
+          enum:
+            - validation_error
+            - slot_unavailable
+            - already_booked
+            - unknown_venue
+            - not_found
+        message:
+          type: string
+      description: Единый формат ошибки.
+    ApiErrorResponse:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          $ref: '#/components/schemas/ApiErrorBody'
+    BookingCreatedResponse:
+      type: object
+      required:
+        - body
+      properties:
+        body:
+          $ref: '#/components/schemas/BookingResponse'
+    BookingRequest:
+      type: object
+      required:
+        - slotId
+        - format
+        - guestName
+        - guestEmail
+      properties:
+        slotId:
+          type: string
+        format:
+          $ref: '#/components/schemas/FormatName'
+        guestName:
+          type: string
+        guestEmail:
+          type: string
+        venueId:
+          type: string
+    BookingResponse:
+      type: object
+      required:
+        - id
+        - slotId
+        - startsAt
+        - format
+        - guestName
+        - guestEmail
+        - createdAt
+      properties:
+        id:
+          type: string
+        slotId:
+          type: string
+        startsAt:
+          type: string
+        format:
+          $ref: '#/components/schemas/FormatName'
+        guestName:
+          type: string
+        guestEmail:
+          $ref: '#/components/schemas/MaskedEmail'
+        venueId:
+          type: string
+        createdAt:
+          type: string
+    Evening:
+      type: object
+      required:
+        - date
+        - availableSlots
+        - slots
+      properties:
+        date:
+          type: string
+        availableSlots:
+          type: integer
+          format: int32
+        slots:
+          type: array
+          items:
+            $ref: '#/components/schemas/Slot'
+    EveningsResponse:
+      type: object
+      required:
+        - evenings
+      properties:
+        evenings:
+          type: array
+          items:
+            $ref: '#/components/schemas/Evening'
+    FormatName:
+      type: string
+      enum:
+        - online
+        - offline
+        - group
+    HealthResponse:
+      type: object
+      required:
+        - status
+      properties:
+        status:
+          type: string
+          enum:
+            - ok
+    MaskedEmail:
+      type: string
+      description: 'Маска email: u***@example.com. Полный email через GET не возвращается.'
+    Slot:
+      type: object
+      required:
+        - id
+        - eveningDate
+        - startsAt
+        - endsAt
+        - timeLabel
+        - capacity
+        - booked
+        - available
+        - lockedFormat
+      properties:
+        id:
+          type: string
+          description: 'Идентификатор слота: YYYY-MM-DD-HH:mm по фактическому времени начала.'
+        eveningDate:
+          type: string
+          description: Дата вечера, к которому относится слот (для слотов 00:00–02:00 — предыдущий день).
+        startsAt:
+          type: string
+          description: Начало в Europe/Moscow, ISO с +03:00.
+        endsAt:
+          type: string
+          description: Конец в Europe/Moscow.
+        timeLabel:
+          type: string
+          description: Подпись, как её видит гость (например '09:00–10:00').
+        capacity:
+          type: integer
+          format: int32
+        booked:
+          type: integer
+          format: int32
+        available:
+          type: boolean
+          description: Свободен ли слот в выбранном формате с учётом «сейчас» и горизонта.
+        lockedFormat:
+          allOf:
+            - $ref: '#/components/schemas/FormatName'
+          nullable: true
+          description: Формат, зафиксированный первой записью. Если null — слот доступен для любого формата.
+    UpcomingResponse:
+      type: object
+      required:
+        - bookings
+      properties:
+        bookings:
+          type: array
+          items:
+            $ref: '#/components/schemas/BookingResponse'
+    Venue:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    VenuesResponse:
+      type: object
+      required:
+        - venues
+      properties:
+        venues:
+          type: array
+          items:
+            $ref: '#/components/schemas/Venue'
+servers:
+  - url: http://localhost:3000
+    description: Локальный dev-сервер
+    variables: {}

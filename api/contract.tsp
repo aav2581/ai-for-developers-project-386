@@ -110,7 +110,12 @@ interface Evenings {
 
 @route("/api/bookings")
 interface Bookings {
-  @post create(@body request: BookingRequest): BookingResponse;
+  @post create(@body request: BookingRequest): BookingCreatedResponse;
+}
+
+model BookingCreatedResponse {
+  @statusCode _: "201";
+  body: BookingResponse;
 }
 
 @route("/api/bookings/upcoming")
