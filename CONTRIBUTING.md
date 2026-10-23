@@ -56,7 +56,7 @@ apps/
 
 ## Контракт и codegen
 
-API живёт в одном месте — `api/contract.tsp`. Из этого TypeSpec-контракта генерируются `api/openapi.yaml`, json-схемы в `apps/backend/src/generated/` и клиентский SDK в `apps/frontend/src/shared/api/sdk/`. Эти файлы — артефакты эмиттеров; руками их править нельзя, иначе `npm run codegen:drift` упадёт в CI.
+API живёт в одном месте — `api/contract.tsp`. Из этого TypeSpec-контракта генерируются `api/openapi.yaml`, json-схемы в `apps/backend/src/generated/` и клиентский SDK в `apps/frontend/src/shared/api/sdk/`. Эти файлы — артефакты эмиттеров; руками их править нельзя, дрифт ловит `npm run codegen:drift` (локально).
 
 Порядок изменения API:
 
@@ -86,7 +86,6 @@ API живёт в одном месте — `api/contract.tsp`. Из этого 
 | `lint` | `npm run lint` |
 | `typecheck` | `npm run typecheck` |
 | `test` | `npm test` |
-| `codegen-drift` | `npm run codegen:drift`, валит PR при ручной правке эмит-артефактов |
-| `build` | `npm run build`, стартует после всех проверок выше |
+| `build` | `npm run build`, стартует после трёх проверок выше |
 
 CI запускается на pull request в `main`, на push в `main` и вручную через `workflow_dispatch`. Мерж выполняется вручную кнопкой в веб-интерфейсе GitHub после зелёного CI.

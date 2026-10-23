@@ -205,7 +205,7 @@ in-memory SQLite проверяем:
 | Формы API, доменные модели OpenAPI | `api/contract.tsp` |
 
 Перегенерация: `npm run codegen` (T3 + T4 + T5).
-Drift-check: `npm run codegen:drift` (T6) — падает в CI.
+Drift-check: `npm run codegen:drift` (T6) — запускается локально, падает при ручной правке эмит-артефактов.
 
 | Поведение и UX-правила | `docs/spec.md` + `issue #7` |
 |---|---|
